@@ -25,14 +25,30 @@ composer install
 
 # 4. Salin file .env dan sesuaikan konfigurasi database
 cp .env.example .env
+```
 
+#.env
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=bansos
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+```bash
 # 5. Generate application key
 php artisan key:generate
 
 # 6. Setup database: buat database dan sesuaikan config di .env
-php artisan migrate --seed
+php artisan migrate
 
-# 7. Jalankan server lokal
+#7. Migrasi Seeder (data dummy)
+php artisan db:seed
+
+# 8. Jalankan server lokal
 php artisan serve
 ```
 
