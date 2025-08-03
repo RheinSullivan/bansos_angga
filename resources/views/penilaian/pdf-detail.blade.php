@@ -29,7 +29,7 @@
                 <h5><i class="fas fa-list mr-2"></i>Data Kriteria:</h5>
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm">
-                        <thead class="thead-light">
+                        <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Kriteria</th>

@@ -26,7 +26,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered table-hover text-sm">
-                    <thead class="thead-light text-center">
+                    <thead class="text-center">
                         <tr>
                             <th>Nama</th>
                             <th>NIK</th>

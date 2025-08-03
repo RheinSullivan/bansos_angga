@@ -28,7 +28,7 @@
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped mb-0 text-sm">
-                    <thead class="thead-light">
+                    <thead>
                         <tr>
                             <th>No</th>
                             <th>Kriteria</th>
