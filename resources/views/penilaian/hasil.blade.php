@@ -20,7 +20,7 @@
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-bordered mb-0 text-sm">
-                    <thead class="thead-light text-center">
+                    <thead class="text-center">
                         <tr>
                             <th>Ranking</th>
                             <th>Nama</th>

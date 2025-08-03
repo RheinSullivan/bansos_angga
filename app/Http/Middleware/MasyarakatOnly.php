@@ -17,14 +17,10 @@ class MasyarakatOnly
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()) {
-            return redirect()->route('login');
+        if (auth()->check() && auth()->user()->role === 'masyarakat') {
+            return $next($request);
         }
 
-        if (Auth::user()->role !== 'masyarakat') {
-            return redirect()->route('dashboard.admin')->with('error', 'Akses ditolak! Anda tidak memiliki izin untuk mengakses halaman ini.');
-        }
-
-        return $next($request);
+        abort(403, 'Hanya masyarakat yang dapat mengakses halaman ini.');
     }
 } 

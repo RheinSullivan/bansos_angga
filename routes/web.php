@@ -16,7 +16,7 @@ use App\Http\Controllers\MasyarakatDashboardController;
 |--------------------------------------------------------------------------
 */
 
-// Halaman Welcome
+// Halaman Welcome  
 Route::get('/', function () {
     return view('welcome');
 })->name('landing');
@@ -25,19 +25,14 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 // Redirect setelah login berdasarkan role
-Route::get('/home', function () {
-    $user = auth()->user();
-    return $user->role === 'admin'
-        ? redirect()->route('dashboard.admin')
-        : redirect()->route('masyarakat.dashboard');
+Route::get('/home', function(){
+    return view('home');
 })->middleware('auth');
 
 // Route untuk Admin
 Route::middleware(['auth'])->group(function () {
-
     // Dashboard Admin
     Route::get('/dashboard/admin', [App\Http\Controllers\DashboardController::class, 'admin'])->name('dashboard.admin');
-
     // CRUD Akun (User)
     Route::prefix('admin/akun')->name('akun.')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
@@ -87,7 +82,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/cetak-pdf-detail', [PenilaianController::class, 'cetakPDFDetail'])->name('cetak-pdf-detail');
     });
 
-
 });
 
 // Route untuk masyarakat
@@ -96,4 +90,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [MasyarakatDashboardController::class, 'index'])->name('dashboard');
         Route::get('/hasil', [MasyarakatDashboardController::class, 'hasil'])->name('hasil');
     });
+});
+
+// Route Hasil Penilaian
+Route::middleware(['auth', 'masyarakat'])->group(function () {
+    Route::get('/masyarakat/penilaian/hasil', [PenilaianController::class, 'hasil'])->name('penilaian.hasil.masyarakat');
 });
